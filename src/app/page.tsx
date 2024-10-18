@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import WebPageTitle from "./components/WebPageTitle";
@@ -8,6 +10,7 @@ import Footer from "./components/Footer";
 import { HiReceiptTax } from "react-icons/hi";
 import { GrDocumentPerformance } from "react-icons/gr";
 import { TbSettingsAutomation } from "react-icons/tb";
+import useScreenWidth from "./hooks/useScreenWidth";
 
 const records = [
   {
@@ -57,6 +60,8 @@ const services = [
 ];
 
 export default function Home() {
+  const screenWidth = useScreenWidth();
+
   return (
     <>
       <WebPageTitle title="HR App | Shamzbridge Consult" />
@@ -100,7 +105,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row gap-20 px-5 xl:px-0">
             <div className="flex flex-col justify-between w-full md:w-[500px] text-white">
               <div data-aos="fade-right">
-                <h2 className="text-3xl md:text-[50px] font-semibold md:w-[400px]">
+                <h2 className="text-3xl md:text-[50px] font-semibold">
                   Mission
                 </h2>
                 <p className="pt-5 leading-8">
@@ -114,7 +119,7 @@ export default function Home() {
               </div>
 
               <div className="mt-10 xl:mt-0" data-aos="fade-right">
-                <h2 className="text-3xl md:text-[50px] font-semibold md:w-[400px]">
+                <h2 className="text-3xl md:text-[50px] font-semibold">
                   Vision
                 </h2>
                 <p className="pt-5 leading-8">
@@ -127,7 +132,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col" data-aos="fade-left">
+            <div
+              className="flex flex-col overflow-hidden"
+              data-aos={screenWidth < 700 ? "fade-right" : "fade-left"}
+            >
               <div>
                 <Image
                   src={aboutUs}
@@ -158,7 +166,10 @@ export default function Home() {
           className="flex flex-col justify-center items-center rounded-e-2xl rounded-s-2xl mx-10 py-20 scroll-mt-14"
         >
           <h2 className="font-medium text-xl">Our Services</h2>
-          <p className="text-2xl md:text-4xl font-bold w-[400px] text-center mt-3" data-aos="fade-in">
+          <p
+            className="text-2xl md:text-4xl font-bold w-[400px] text-center mt-3"
+            data-aos="fade-in"
+          >
             Here&apos;s what you get when you{" "}
             <span className="text-primary">work</span> with us
           </p>
