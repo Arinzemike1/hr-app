@@ -9,7 +9,7 @@ import { HiReceiptTax } from "react-icons/hi";
 import { GrDocumentPerformance } from "react-icons/gr";
 import { TbSettingsAutomation } from "react-icons/tb";
 
-export const records = [
+const records = [
   {
     id: 1,
     count: "4",
@@ -32,7 +32,7 @@ export const records = [
   },
 ];
 
-export const services = [
+const services = [
   {
     id: 1,
     icon: <HiReceiptTax />,
